@@ -2,16 +2,14 @@
   gather_facts: true
   vars:
     - ansible_user: centos
-    - master_node: prepare
     - masternode_public_dns: "{{ masternode_public_dns }}"
-#    - ansible_ssh_private_key_file: /home/karthickk/Downloads/testvmec2.pem
+    - masternode_private_dns: "{{ masternode_private_dns }}"
+    - workernodes_private_dns: "{{ workernodes_private_dns }}"
   tasks:
     - name: get deploy script
       get_url:
-        url: https://github.com/corestackdev/okd-requirements/raw/master/prepare.yaml
-        dest: /home/centos/prepare.yaml
+        url: https://github.com/karthick-kk/ansible/raw/master/deployokd311.sh
+        dest: /home/centos/deployokd311.sh
         mode: '0755'
     - name: run deploy script
-      shell: cat /home/centos/"{{ master_node }}".yaml
-    - debug: msg="Master node is {{ masternode_public_dns }}"
-  
+      shell: "./deployokd311.sh --masternode_public_dns '{{ masternode_public_dns }}' --masternode_private_dns '{{ masternode_private_dns }}' --workernodes_private_dns '{{ workernodes_private_dns }}'
