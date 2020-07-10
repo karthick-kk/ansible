@@ -11,5 +11,5 @@
         dest: /home/centos/prepare.yaml
         mode: '0755'
     - name: run deploy script
-      shell: cat /home/centos/"{{ master_node }}".yml
+      shell: cat /home/centos/"{{ master_node }}".yaml
   
