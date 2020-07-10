@@ -3,6 +3,7 @@
   vars:
     - ansible_user: centos
     - master_node: prepare
+    - masternode_public_dns: "{{ masternode_public_dns }}"
 #    - ansible_ssh_private_key_file: /home/karthickk/Downloads/testvmec2.pem
   tasks:
     - name: get deploy script
@@ -12,4 +13,5 @@
         mode: '0755'
     - name: run deploy script
       shell: cat /home/centos/"{{ master_node }}".yaml
+    - debug: msg="Master node is {{ masternode_public_dns }}"
   
