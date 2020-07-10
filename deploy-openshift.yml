@@ -1,0 +1,15 @@
+- hosts: all
+  gather_facts: true
+  vars:
+    - ansible_user: centos
+    - master_node: prepare
+#    - ansible_ssh_private_key_file: /home/karthickk/Downloads/testvmec2.pem
+  tasks:
+    - name: get deploy script
+      get_url:
+        url: https://github.com/corestackdev/okd-requirements/raw/master/prepare.yaml
+        dest: /home/centos/prepare.yaml
+        mode: '0755'
+    - name: run deploy script
+      shell: cat /home/centos/"{{ master_node }}".yml
+  
