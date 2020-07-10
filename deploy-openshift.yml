@@ -12,4 +12,4 @@
         dest: /home/centos/deployokd311.sh
         mode: '0755'
     - name: run deploy script
-      shell: "./deployokd311.sh --masternode_public_dns '{{ masternode_public_dns }}' --masternode_private_dns '{{ masternode_private_dns }}' --workernodes_private_dns '{{ workernodes_private_dns }}'
+      shell: ./deployokd311.sh --masternode_public_dns '"{{ masternode_public_dns }}"' --masternode_private_dns '"{{ masternode_private_dns }}"' --workernodes_private_dns '"{{ workernodes_private_dns }}"'
