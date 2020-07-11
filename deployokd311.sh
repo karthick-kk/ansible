@@ -70,7 +70,8 @@ ansible-playbook openshift-ansible/playbooks/deploy_cluster.yml -i inventory.yam
 
 for node in $workernodes_private_dns
 do
-    ssh $node "sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config; sudo service sshd restart"
+    ssh $node "sed -i '/PasswordAuthentication/s/^#//; /PasswordAuthentication/s/yes/no/' /etc/ssh/sshd_config; sudo service sshd restart"
+    
 done
 sudo sed -i '/StrictHostKeyChecking/s/^#//; /StrictHostKeyChecking/s/no/ask/' /etc/ssh/ssh_config
 
