@@ -72,6 +72,6 @@ for node in $workernodes_private_dns
 do
     ssh $node "sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config; sudo service sshd restart"
 done
-sudo sed -i '/StrictHostKeyChecking/s/^#//; /StrictHostKeyChecking/s/no/yes/' /etc/ssh/ssh_config
+sudo sed -i '/StrictHostKeyChecking/s/^#//; /StrictHostKeyChecking/s/no/ask/' /etc/ssh/ssh_config
 
 exit 0
