@@ -2,5 +2,8 @@
   vars:
     swap_file_size_mb: '512'
     swap_file_state: present
+  tasks:
+    - name: test play
+      debug: msg="Iam {{ ansible_user }} on {{ ansible_host }}"
   roles:
     - { role: ansible-role-swap, become: yes }
