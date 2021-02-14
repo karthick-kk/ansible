@@ -1,0 +1,6 @@
+- hosts: all
+  vars:
+    swap_file_size_mb: '512'
+    swap_file_state: present
+  roles:
+    - { role: ansible-role-swap, become: yes }
